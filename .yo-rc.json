@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.5.1",
+    "libraryName": "hls-central-west-webparts",
+    "libraryId": "abd760f8-7892-417f-8928-ce27ec3ad29f",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

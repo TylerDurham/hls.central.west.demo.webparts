@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "hls-central-west-webparts-client-side-solution",
+    "id": "abd760f8-7892-417f-8928-ce27ec3ad29f",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/hls-central-west-webparts.sppkg"
+  }
+}
