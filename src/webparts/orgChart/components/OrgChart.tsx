@@ -2,22 +2,17 @@ import * as React from 'react';
 import styles from './OrgChart.module.scss';
 import { IOrgChartProps } from './IOrgChartProps';
 import { escape } from '@microsoft/sp-lodash-subset';
+import { IPropertyFieldGroupOrPerson } from "@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker";
+import  PersonCard  from './PersonCard';
 
 export default class OrgChart extends React.Component<IOrgChartProps, {}> {
   public render(): React.ReactElement<IOrgChartProps> {
     return (
       <div className={ styles.orgChart }>
-        <div className={ styles.container }>
-          <div className={ styles.row }>
-            <div className={ styles.column }>
-              <span className={ styles.title }>Welcome to SharePoint!</span>
-              <p className={ styles.subTitle }>Customize SharePoint experiences using Web Parts.</p>
-              <p className={ styles.description }>{escape(this.props.description)}</p>
-              <a href="https://aka.ms/spfx" className={ styles.button }>
-                <span className={ styles.label }>Learn more</span>
-              </a>
-            </div>
-          </div>
+        <div>
+
+          <PersonCard person={this.props.person} />
+
         </div>
       </div>
     );
