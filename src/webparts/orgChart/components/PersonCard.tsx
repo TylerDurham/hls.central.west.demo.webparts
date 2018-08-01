@@ -1,14 +1,10 @@
 import * as React from 'react';
 import { IPropertyFieldGroupOrPerson } from "@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker";
 import { IPersonCardProps } from './IPersonCardProps';
-import PerformanceDisplay from '../../../../temp/workbench-packages/@microsoft_sp-loader/lib/DeveloperTools/Components/DeveloperModules/PerformanceDisplay/PerformanceDisplay';
 
 const DEFAULT_IMG_WIDTH = 48;
 const DEFAULT_IMG_HEIGHT = DEFAULT_IMG_WIDTH;
-
 export default class PersonCard extends React.Component<IPersonCardProps, {}> {
-
-    
 
     public render(): React.ReactElement<IPersonCardProps> {
       console.log(this.props.person);
@@ -21,7 +17,7 @@ export default class PersonCard extends React.Component<IPersonCardProps, {}> {
 
     private getImage(person: IPropertyFieldGroupOrPerson, fgColor: string = 'fffffff', bgColor: string = '878787') {
       if (person.imageUrl == null) {
-        return `http://via.placeholder.com/${DEFAULT_IMG_WIDTH}x${DEFAULT_IMG_HEIGHT}/${bgColor}/${fgColor}`;
+        return `https://via.placeholder.com/${DEFAULT_IMG_WIDTH}x${DEFAULT_IMG_HEIGHT}/${bgColor}/${fgColor}`;
       } else {
         return person.imageUrl;
       }
@@ -34,6 +30,6 @@ export default class PersonCard extends React.Component<IPersonCardProps, {}> {
               <div>{this.props.person.jobTitle}</div>
               <div><img src={this.getImage(this.props.person)}/></div>
             </div>
-          )
+          );
     }
 }

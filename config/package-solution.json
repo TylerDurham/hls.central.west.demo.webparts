@@ -4,9 +4,16 @@
     "name": "hls-central-west-webparts-client-side-solution",
     "id": "abd760f8-7892-417f-8928-ce27ec3ad29f",
     "version": "1.0.0.0",
-    "includeClientSideAssets": true
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.ReadBasic.All"
+      }
+    ]
   },
   "paths": {
-    "zippedPackage": "solution/hls-central-west-webparts.sppkg"
+    "zippedPackage": "solution/hls-central-west-demo-webparts.sppkg"
   }
 }

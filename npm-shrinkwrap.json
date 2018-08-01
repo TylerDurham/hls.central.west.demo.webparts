@@ -718,6 +718,12 @@
         "superagent": "^3.5.2"
       }
     },
+    "@microsoft/microsoft-graph-types": {
+      "version": "1.3.0",
+      "resolved": "https://registry.npmjs.org/@microsoft/microsoft-graph-types/-/microsoft-graph-types-1.3.0.tgz",
+      "integrity": "sha1-uHGYzIi4LfihwESRw9D0OFxoHKI=",
+      "dev": true
+    },
     "@microsoft/node-core-library": {
       "version": "1.2.0",
       "resolved": "https://registry.npmjs.org/@microsoft/node-core-library/-/node-core-library-1.2.0.tgz",

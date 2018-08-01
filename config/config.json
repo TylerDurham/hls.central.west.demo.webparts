@@ -7,6 +7,10 @@
         {
           "entrypoint": "./lib/webparts/orgChart/OrgChartWebPart.js",
           "manifest": "./src/webparts/orgChart/OrgChartWebPart.manifest.json"
+        },
+        {
+          "entrypoint": "./lib/webparts/meViewer/MeViewerWebPart.js",
+          "manifest": "./src/webparts/meViewer/MeViewerWebPart.manifest.json"
         }
       ]
     }

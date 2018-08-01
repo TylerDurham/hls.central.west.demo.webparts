@@ -6,7 +6,7 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
-
+import { MSGraphClient } from '@microsoft/sp-client-preview';
 import * as strings from 'OrgChartWebPartStrings';
 import OrgChart from './components/OrgChart';
 import { IOrgChartProps } from './components/IOrgChartProps';
@@ -21,7 +21,7 @@ export interface IOrgChartWebPartProps {
 
 export default class OrgChartWebPart extends BaseClientSideWebPart<IOrgChartWebPartProps> {
 
-  selectedPerson: IPropertyFieldGroupOrPerson;
+  private selectedPerson: IPropertyFieldGroupOrPerson;
 
   public onPropertyPaneFieldChanged(path: string, oldItems: IPropertyFieldGroupOrPerson[], newItems: IPropertyFieldGroupOrPerson[]) {
     
@@ -32,9 +32,28 @@ export default class OrgChartWebPart extends BaseClientSideWebPart<IOrgChartWebP
         if((oldItems != null && oldItems.length > 0) && ( newItems != null && newItems.length > 0)) {
             //this.properties.selectedItems = newItems; // TODO: Not sure if I need to set this
             this.selectedPerson = newItems[0];
+            //this.getUser(this.selectedPerson.login);
           }
           break;
-    }    
+    }
+  }
+
+  private getUser(upn: string) {
+    const graphClient: MSGraphClient = this.context.serviceScope.consume(
+      MSGraphClient.serviceKey
+    );
+
+    graphClient
+      .api(`/users/${upn}`)
+      .version('v1.0')
+      .select('displayName,mail,userPrincipalName')
+      .get((err, res) => {
+          if(err) {
+            console.log(err);
+          } else {
+            console.log(res);
+          }
+      });
   }
 
   public render(): void {
@@ -71,7 +90,6 @@ export default class OrgChartWebPart extends BaseClientSideWebPart<IOrgChartWebP
                 PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
                 }),
-                
                 PropertyFieldPeoplePicker('people', {
                   label: 'PropertyFieldPeoplePicker',
                   initialData: this.properties.selectedItems,
