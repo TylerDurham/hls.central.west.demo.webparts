@@ -1,4 +1,4 @@
-## hls-central-west-webparts
+## hls.central.west.webparts
 
 This is where you include your WebPart documentation.
 
