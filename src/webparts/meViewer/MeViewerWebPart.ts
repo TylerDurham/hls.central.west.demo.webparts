@@ -10,7 +10,7 @@ import {
 } from '@microsoft/sp-webpart-base';
 
 import { MSGraphClient } from '@microsoft/sp-client-preview';
-import { MeViewer, IMeViewerProps } from './components/MeViewer'
+import { MeViewer, IMeViewerProps } from './components/MeViewer';
 import IMsftGraphUser from '../../models/IMsftGraphUser';
 import ServiceFactory from '../../services/ServiceFactory';
 
@@ -20,7 +20,7 @@ export interface IMeViewerWebPartProps {
 
 export default class MeViewerWebPart extends BaseClientSideWebPart<IMeViewerWebPartProps> {
 
-    user: IMsftGraphUser = null;
+    private user: IMsftGraphUser = null;
 
     
 

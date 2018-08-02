@@ -25,5 +25,5 @@ export class MsftGraphUserService implements IMsftGraphUserService {
         });
     }
 
-    isMock(): boolean { return false; }
+    public isMock(): boolean { return false; }
 }

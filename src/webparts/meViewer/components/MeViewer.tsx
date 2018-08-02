@@ -30,7 +30,7 @@ export class MeViewer extends React.Component<IMeViewerProps, IMeViewerState> {
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
     }
   }
 
@@ -42,7 +42,6 @@ export class MeViewer extends React.Component<IMeViewerProps, IMeViewerState> {
         <h3>Loading...</h3>
       );
     } else {
-      console.log(this.state);
       return (
         <div>
           <h3>{this.state.currentUser.displayName}</h3>
