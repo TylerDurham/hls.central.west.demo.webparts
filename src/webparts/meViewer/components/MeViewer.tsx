@@ -26,7 +26,7 @@ export class MeViewer extends React.Component<IMeViewerProps, IMeViewerState> {
     if(this.props.service) {
       this.props.service.getMyProfile()
       .then((data) => {
-        this.setState({ currentUser: data})
+        this.setState({ currentUser: data});
       })
       .catch((err) => {
         console.error(err);
@@ -40,7 +40,7 @@ export class MeViewer extends React.Component<IMeViewerProps, IMeViewerState> {
     if(this.state == null) {
       return (
         <h3>Loading...</h3>
-      )
+      );
     } else {
       console.log(this.state);
       return (

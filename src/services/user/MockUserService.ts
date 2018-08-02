@@ -1,6 +1,7 @@
 import { IMsftGraphUserService } from './IUserService';
-import IMsftGraphUser from '../../../lib/models/IMsftGraphUser';
+import IMsftGraphUser from '../../models/IMsftGraphUser';
 
+// Include our mock data generated at https://mockaroo.com/effb0b60
 const USERS = require('./MockUserServiceData.json') as IMsftGraphUser[];
 
 export class MockUserService implements IMsftGraphUserService {
@@ -10,4 +11,6 @@ export class MockUserService implements IMsftGraphUserService {
             resolve(USERS[index]);
         });
     }
+
+    isMock(): boolean { return true; }
 }

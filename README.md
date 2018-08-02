@@ -24,3 +24,14 @@ gulp test - TODO
 gulp serve - TODO
 gulp bundle - TODO
 gulp package-solution - TODO
+
+# Mock Data
+
+Each data service has the ability to generate mock data.
+
+# Services
+
+## IMsftGraphUser
+
+Mock Data generated at https://mockaroo.com/effb0b60
+

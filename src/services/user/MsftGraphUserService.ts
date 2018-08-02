@@ -11,7 +11,7 @@ export class MsftGraphUserService implements IMsftGraphUserService {
         this.graphClient = serviceScope.consume(MSGraphClient.serviceKey);
     }
 
-    getMyProfile(): Promise<IMsftGraphUser> {
+    public getMyProfile(): Promise<IMsftGraphUser> {
         return new Promise<IMsftGraphUser>((resolve, reject) => {
             this.graphClient
                 .api("/me")
@@ -21,7 +21,9 @@ export class MsftGraphUserService implements IMsftGraphUserService {
                     } else {
                         resolve(res);
                     }
-                })
+                });
         });
     }
+
+    isMock(): boolean { return false; }
 }

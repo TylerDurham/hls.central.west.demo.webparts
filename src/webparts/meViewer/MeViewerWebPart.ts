@@ -11,7 +11,7 @@ import {
 
 import { MSGraphClient } from '@microsoft/sp-client-preview';
 import { MeViewer, IMeViewerProps } from './components/MeViewer'
-import IMsftGraphUser from '../../../lib/lib/IMsftGraphUser';
+import IMsftGraphUser from '../../models/IMsftGraphUser';
 import ServiceFactory from '../../services/ServiceFactory';
 
 export interface IMeViewerWebPartProps {
