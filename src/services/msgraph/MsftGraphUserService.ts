@@ -1,4 +1,4 @@
-import { IMsftGraphUserService } from './IUserService';
+import { IMsftGraphUserService } from '../IMsftGraphUserService';
 import { MSGraphClient } from '@microsoft/sp-client-preview';
 import { ServiceScope, ServiceKey } from '@microsoft/sp-core-library';
 import IMsftGraphUser from '../../models/IMsftGraphUser';

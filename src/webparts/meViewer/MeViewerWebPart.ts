@@ -1,56 +1,63 @@
-import * as React from 'react';
-import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
-
+import * as React from "react";
+import * as ReactDom from "react-dom";
+import * as strings from "MeViewerWebPartStrings";
 
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+  PropertyPaneTextField,
+  PropertyPaneChoiceGroup
+} from "@microsoft/sp-webpart-base";
 
-import { MSGraphClient } from '@microsoft/sp-client-preview';
-import { MeViewer, IMeViewerProps } from './components/MeViewer';
-import IMsftGraphUser from '../../models/IMsftGraphUser';
-import ServiceFactory from '../../services/ServiceFactory';
+import { MeViewer, IMeViewerProps } from "./components/MeViewer";
+import IMsftGraphUser from "../../models/IMsftGraphUser";
+import ServiceFactory from "../../services/ServiceFactory";
+import { PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 
 export interface IMeViewerWebPartProps {
-    description: string;
+  description: string;
+  size: PersonaSize;
 }
 
 export default class MeViewerWebPart extends BaseClientSideWebPart<IMeViewerWebPartProps> {
+  private user: IMsftGraphUser = null;
 
-    private user: IMsftGraphUser = null;
+  public render(): void {
+    let element = React.createElement(MeViewer, {
+      service: ServiceFactory.createMsfgGraphUserService(this.context.serviceScope),
+      size: this.properties.size
+    });
+    ReactDom.render(element, this.domElement);
+  }
 
-    
-
-    public render(): void {
-        let element = React.createElement(
-            MeViewer, {
-                service: ServiceFactory.createUserService(this.context.serviceScope)
-            });
-        ReactDom.render(element, this.domElement);
-    }
-
-    
-
-    private getUserData() {
-        return new Promise((resolve, reject) => {
-            const graphClient: MSGraphClient = this.context.serviceScope.consume(
-                MSGraphClient.serviceKey
-              );
-    
-            graphClient
-              .api('/me')
-              .select('displayName')
-              .get((err, res) => {
-                if(err) {
-                    reject(err);
-                } else {
-                    resolve(res);
-                }
-              });
-        });
-    }
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+    return {
+      pages: [
+        {
+          header: {
+            description: strings.PropertyPaneDescription
+          },
+          groups: [
+            {
+              groupName: strings.BasicGroupName,
+              groupFields: [
+                PropertyPaneTextField("description", {
+                  label: strings.DescriptionFieldLabel
+                }),
+                PropertyPaneChoiceGroup("size", {
+                    label: strings.SizeFieldLabel,
+                    options: [
+                      { key: 12, text: 'Small' },
+                      { key: 13, text: 'Medium', checked: true},
+                      { key: 14, text: 'Large' },
+                      { key: 15, text: 'X-Large' }
+                    ]
+                  })
+              ]
+            }
+          ]
+        }
+      ]
+    };
+  }
 }
-

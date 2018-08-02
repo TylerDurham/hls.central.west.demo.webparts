@@ -1,17 +1,12 @@
 import * as React from "react";
-import { IPropertyFieldGroupOrPerson } from "@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker";
 import IMsftGraphUser from "../../../models/IMsftGraphUser";
-import { MsftGraphUserService } from "../../../services/user/MsftGraphUserService";
-import { WebPartContext } from "@microsoft/sp-webpart-base";
-import { IMsftGraphUserService } from "../../../services/user/IUserService";
-
-const DEFAULT_IMG_WIDTH = 48;
-const DEFAULT_IMG_HEIGHT = DEFAULT_IMG_WIDTH;
+import { IMsftGraphUserService } from "../../../services/IMsftGraphUserService";
+import { IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 
 export interface IMeViewerProps {
   service: IMsftGraphUserService;
+  size: PersonaSize;
 }
-
 export interface IMeViewerState {
   currentUser: IMsftGraphUser;
 }
@@ -35,17 +30,20 @@ export class MeViewer extends React.Component<IMeViewerProps, IMeViewerState> {
   }
 
   public render(): React.ReactElement<IMeViewerProps> {
-
-    
     if(this.state == null) {
       return (
         <h3>Loading...</h3>
       );
     } else {
       return (
-        <div>
-          <h3>{this.state.currentUser.displayName}</h3>
-          <h4>{this.state.currentUser.jobTitle}</h4>
+        <div className="ms-PersonaExample">
+          <Persona
+            primaryText={this.state.currentUser.displayName}
+            secondaryText={this.state.currentUser.jobTitle}
+            tertiaryText={this.state.currentUser.officeLocation}
+            size={this.props.size}
+            presence={PersonaPresence.away}
+          />
         </div>
       );
     }

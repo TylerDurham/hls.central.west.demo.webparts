@@ -1,10 +1,10 @@
-import { IMsftGraphUserService } from './IUserService';
+import { IMsftGraphUserService } from '../IMsftGraphUserService';
 import IMsftGraphUser from '../../models/IMsftGraphUser';
 
 // Include our mock data generated at https://mockaroo.com/effb0b60
 const USERS = require('./MockUserServiceData.json') as IMsftGraphUser[];
 
-export class MockUserService implements IMsftGraphUserService {
+export class MsftGraphUserServiceMock implements IMsftGraphUserService {
     public getMyProfile(): Promise<IMsftGraphUser> {
         return new Promise((resolve, reject) => {
             let index = Math.ceil((Math.random() * USERS.length - 1));

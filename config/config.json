@@ -18,6 +18,7 @@
   "externals": {},
   "localizedResources": {
     "OrgChartWebPartStrings": "lib/webparts/orgChart/loc/{locale}.js",
+    "MeViewerWebPartStrings": "lib/webparts/meViewer/loc/{locale}.js",
     "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
   }
 }
