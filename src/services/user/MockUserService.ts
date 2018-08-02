@@ -25,13 +25,26 @@ const USERS: IMsftGraphUser[] = [
         jobTitle: 'Senior Accountant',
         officeLocation: 'Nashville, TN',
         mobilePhone: '(234) 234-2346'
+    },
+    {
+        id: '12312312-1234-1234-123123123123',
+        displayName: 'Sara Davis',
+        userPrincipalName: 'sdavis@somedomain.com',
+        mail: 'sdavis@somedomain.com',
+        businessPhones: [
+            '(123) 123-1236'
+        ],
+        jobTitle: 'CEO',
+        officeLocation: 'Nashville, TN',
+        mobilePhone: '(234) 234-2346'
     }
 ]
 
 export class MockUserService implements IMsftGraphUserService {
     getMyProfile(): Promise<IMsftGraphUser> {
         return new Promise((resolve, reject) => {
-            resolve(USERS[0]);
+            let index = Math.ceil((Math.random() * USERS.length - 1));
+            resolve(USERS[index]);
         });
     }
 }
