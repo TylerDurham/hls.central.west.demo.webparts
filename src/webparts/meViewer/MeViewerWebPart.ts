@@ -26,7 +26,6 @@ export default class MeViewerWebPart extends BaseClientSideWebPart<IMeViewerWebP
 
   public render(): void {
 
-    console.log('WEBPART ' + this.properties.includeUserPhoto)
     let element = React.createElement(MeViewer, {
       service: ServiceFactory.createMsftGraphUserService(this.context.serviceScope),
       size: this.properties.size,

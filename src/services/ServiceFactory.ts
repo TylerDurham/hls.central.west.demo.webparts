@@ -1,18 +1,18 @@
 import { SPUserProfileService } from './spo/SPUserProfileService';
 import { SPUserProfileServiceMock } from './spo/SPUserProfileServiceMock';
-import { IMsftGraphUserService } from './IMsftGraphUserService';
-import { MsftGraphUserService } from './msgraph/MsftGraphUserService';
-import { MsftGraphUserServiceMock } from './msgraph/MsftGraphUserServiceMock';
+import { IMSGraphUserService } from './IMSGraphUserService';
+import { MSGraphUserService } from './msgraph/MSGraphUserService';
+import { MSGraphUserServiceMock } from './msgraph/MSGraphUserServiceMock';
 import { ServiceScope, ServiceKey } from '@microsoft/sp-core-library';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import ISPUserProfileService from './ISPUserProfileService';
 
 export default class ServiceFactory{
-    public static createMsftGraphUserService(serviceScope: ServiceScope): IMsftGraphUserService {
+    public static createMsftGraphUserService(serviceScope: ServiceScope): IMSGraphUserService {
         if(ServiceFactory.isLocal()) {
-            return new MsftGraphUserServiceMock(serviceScope);
+            return new MSGraphUserServiceMock(serviceScope);
         } else {
-            return new MsftGraphUserService(serviceScope);
+            return new MSGraphUserService(serviceScope);
         }
     }
 

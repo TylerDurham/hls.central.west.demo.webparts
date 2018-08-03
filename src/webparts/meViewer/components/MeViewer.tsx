@@ -1,6 +1,6 @@
 import * as React from "react";
 import IMsftGraphUser from "../../../models/IMsftGraphUser";
-import { IMsftGraphUserService } from "../../../services/IMsftGraphUserService";
+import { IMSGraphUserService } from "../../../services/IMSGraphUserService";
 import {
   Persona,
   PersonaSize,
@@ -13,7 +13,7 @@ export interface IMeViewerPropertyBag {
   /**
    * An instance of an IMsftGraphUserService that will be used to fetch user data.
    */
-  service: IMsftGraphUserService;
+  service: IMSGraphUserService;
   size: PersonaSize;
 
   /**

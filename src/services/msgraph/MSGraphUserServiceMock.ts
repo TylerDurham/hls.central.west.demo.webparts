@@ -1,17 +1,17 @@
 import {
-  IMsftGraphUserService,
+  IMSGraphUserService,
   IUserProfileOptions
-} from "../IMsftGraphUserService";
+} from "../IMSGraphUserService";
 import IMsftGraphUser from "../../models/IMsftGraphUser";
 import { ServiceScope, ServiceKey } from "@microsoft/sp-core-library";
 import { HttpClient, IHttpClientOptions } from "@microsoft/sp-http";
 
 // Include our mock data generated at https://mockaroo.com/effb0b60
-const USERS = require("./MsftGraphUserServiceMockData.json") as IMsftGraphUser[];
+const USERS = require("./MSGraphUserServiceMockData.json") as IMsftGraphUser[];
 
 const DEFAULT_OPTIONS: IUserProfileOptions = { includePhoto: false };
 
-export class MsftGraphUserServiceMock implements IMsftGraphUserService {
+export class MSGraphUserServiceMock implements IMSGraphUserService {
   private httpClient: HttpClient;
 
   constructor(serviceScope: ServiceScope) {
