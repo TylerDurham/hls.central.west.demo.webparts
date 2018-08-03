@@ -6,10 +6,11 @@ import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
-  PropertyPaneChoiceGroup
+  PropertyPaneChoiceGroup,
+  PropertyPaneCheckbox
 } from "@microsoft/sp-webpart-base";
 
-import { MeViewer, IMeViewerProps } from "./components/MeViewer";
+import { MeViewer, IMeViewerPropertyBag } from "./components/MeViewer";
 import IMsftGraphUser from "../../models/IMsftGraphUser";
 import ServiceFactory from "../../services/ServiceFactory";
 import { PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
@@ -17,15 +18,19 @@ import { PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona
 export interface IMeViewerWebPartProps {
   description: string;
   size: PersonaSize;
+  includeUserPhoto: boolean;
 }
 
 export default class MeViewerWebPart extends BaseClientSideWebPart<IMeViewerWebPartProps> {
   private user: IMsftGraphUser = null;
 
   public render(): void {
+
+    console.log('WEBPART ' + this.properties.includeUserPhoto)
     let element = React.createElement(MeViewer, {
-      service: ServiceFactory.createMsfgGraphUserService(this.context.serviceScope),
-      size: this.properties.size
+      service: ServiceFactory.createMsftGraphUserService(this.context.serviceScope),
+      size: this.properties.size,
+      includeUserPhoto: this.properties.includeUserPhoto
     });
     ReactDom.render(element, this.domElement);
   }
@@ -41,8 +46,9 @@ export default class MeViewerWebPart extends BaseClientSideWebPart<IMeViewerWebP
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField("description", {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneCheckbox('includeUserPhoto', {
+                  text: strings.IncludeUserPhotoLabel,
+                  checked: true
                 }),
                 PropertyPaneChoiceGroup("size", {
                     label: strings.SizeFieldLabel,

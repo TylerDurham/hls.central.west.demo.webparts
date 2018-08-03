@@ -10,4 +10,5 @@ export default interface IMsftGraphUser {
     preferredLanguage?: string;
     surname?: string;
     userPrincipalName: string;
+    photoUrl?: string;
 }

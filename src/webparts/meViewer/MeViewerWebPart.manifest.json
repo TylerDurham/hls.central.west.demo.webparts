@@ -20,7 +20,8 @@
     "description": { "default": "TODO: MeViewer description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "MeViewer"
+      "includeUserPhoto": true,
+      "size": 13
     }
   }]
 }

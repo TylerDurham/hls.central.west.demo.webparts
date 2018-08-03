@@ -1,4 +1,5 @@
 import { SPUserProfileService } from './spo/SPUserProfileService';
+import { SPUserProfileServiceMock } from './spo/SPUserProfileServiceMock';
 import { IMsftGraphUserService } from './IMsftGraphUserService';
 import { MsftGraphUserService } from './msgraph/MsftGraphUserService';
 import { MsftGraphUserServiceMock } from './msgraph/MsftGraphUserServiceMock';
@@ -7,9 +8,9 @@ import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import ISPUserProfileService from './ISPUserProfileService';
 
 export default class ServiceFactory{
-    public static createMsfgGraphUserService(serviceScope: ServiceScope): IMsftGraphUserService {
+    public static createMsftGraphUserService(serviceScope: ServiceScope): IMsftGraphUserService {
         if(ServiceFactory.isLocal()) {
-            return new MsftGraphUserServiceMock();
+            return new MsftGraphUserServiceMock(serviceScope);
         } else {
             return new MsftGraphUserService(serviceScope);
         }
@@ -17,7 +18,7 @@ export default class ServiceFactory{
 
     public static createSpoUserProfileService (serviceScope: ServiceScope): ISPUserProfileService {
         if(ServiceFactory.isLocal()) {
-            throw new Error('Not implemented! No mock service available for SharePoint User Profiles.');
+            return new SPUserProfileServiceMock();
         } else {
             return new SPUserProfileService(serviceScope);
         }

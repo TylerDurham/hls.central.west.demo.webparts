@@ -3,6 +3,7 @@ define([], function() {
     "PropertyPaneDescription": "",
     "BasicGroupName": "Basic Options",
     "DescriptionFieldLabel": "Description",
-    "SizeFieldLabel": "Size"
+    "SizeFieldLabel": "Size",
+    "IncludeUserPhotoLabel": "Include user photo?"
   }
 });

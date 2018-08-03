@@ -3,6 +3,7 @@ declare interface IMeViewerWebPartStrings {
   BasicGroupName: string;
   DescriptionFieldLabel: string;
   SizeFieldLabel: string;
+  IncludeUserPhotoLabel: string;
 }
 
 declare module 'MeViewerWebPartStrings' {
