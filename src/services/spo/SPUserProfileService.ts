@@ -1,5 +1,5 @@
 import { ServiceScope } from '@microsoft/sp-core-library';
-import ISpoUserProfile from '../../models/ISPUserProfile';
+import ISPUserProfile from '../../models/ISPUserProfile';
 import ISPUserProfileService from '../ISPUserProfileService';
 import { SPHttpClient } from '@microsoft/sp-http';
 
@@ -11,7 +11,7 @@ export class SPUserProfileService implements ISPUserProfileService {
         this.client = new SPHttpClient(serviceScope);
     }
 
-    public getUserProfile(): ISpoUserProfile {
+    public getUserProfile(): ISPUserProfile {
         return null;
     }
     
